@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      RSS Feed Reader
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngIf="!rssFeedItems">
+    <ion-card-header>
+      Hmmm, something looks off
+    </ion-card-header>
+    <ion-card-content>
+      Having trouble loading data? Try to pull down to load the feed again.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let feedItem of rssFeedItems">
+      <ion-thumbnail item-start >
+        <img [src]="feedItem.thumbnail">
+      </ion-thumbnail>
+      <h2>{{ feedItem.title }}</h2>
+      <p>{{ feedItem.description }}</p>
+      <ion-icon item-end ios="ios-arrow-forward" md="md-arrow-forward" (click)="itemSelected(feedItem)"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
