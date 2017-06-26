@@ -83,7 +83,6 @@ export class HomePage {
       if (this.hasNetwork){
 
         this.storage.remove('cachedrssdata').then(() => {
-          console.log('all clear, refreshing');
           this.loadRssData(refresher);
         });
 
@@ -109,64 +108,44 @@ export class HomePage {
   }
 
   loadRssData(refresher) {
-
-    console.log('load...');
-
     this.getCachedRssData().then((data) => {
 
       if (data) {
-        console.log('found cached data');
         let parsedData = JSON.parse(data);
-        console.info(parsedData);
         this.rssFeedItems = parsedData.items;
-
         if (refresher){
           refresher.complete();
         }
       } else {
-        console.log('no cached data found');
-
         this.http.get('https://api.rss2json.com/v1/api.json?rss_url='
           + encodeURIComponent('http://pace.ucsc.cl/feed/'))
           .map(res => res.json()).subscribe(
           data => {
-            console.log('http get..');
-            console.log(data);
             this.rssFeedItems = data.items;
             this.setCachedRssData(JSON.stringify(data.items));
-            console.log("data loaded and cached!");
             if (refresher){
               refresher.complete();
             }
           },
           err => {
-            console.log("Error!");
             if (refresher){
               refresher.complete();
             }
           });
       }
     });
-
-
   }
 
   setCachedRssData(theData) {
-    console.log('set data');
     this.storage.set('cachedrssdata', theData);
   }
 
-
   getCachedRssData() {
-    console.log('get data');
     return this.storage.get('cachedrssdata');
   }
 
   clearCachedRssData() {
-
-    console.log('get data');
     this.storage.clear().then((data) => {
-      console.log('all clear');
     })
   }
 
