@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      RSS Feed Reader
+      Noticas PACE UCSC
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -14,22 +14,46 @@
 
   <ion-card *ngIf="!rssFeedItems">
     <ion-card-header>
-      Hmmm, something looks off
+      Ups, al parecer algo salió mal
     </ion-card-header>
     <ion-card-content>
-      Having trouble loading data? Try to pull down to load the feed again.
+      Problemas cargando las noticas? prueba recargar la página
     </ion-card-content>
   </ion-card>
 
-  <ion-list>
-    <ion-item *ngFor="let feedItem of rssFeedItems">
-      <ion-thumbnail item-start >
-        <img [src]="feedItem.thumbnail">
-      </ion-thumbnail>
-      <h2>{{ feedItem.title }}</h2>
-      <p>{{ feedItem.description }}</p>
-      <ion-icon item-end ios="ios-arrow-forward" md="md-arrow-forward" (click)="itemSelected(feedItem)"></ion-icon>
+  <ion-card *ngFor="let feedItem of rssFeedItems" (click)="itemSelected(feedItem)">
+    <img [src]="feedItem.thumbnail"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{ feedItem.title }}
+      </ion-card-title>
+      <p>
+        {{ feedItem.description }}
+      </p>
+    </ion-card-content>
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='person'></ion-icon>
+          {{feedItem.author}}
+        </button>
+      </ion-col>
+      <ion-col text-center>
+        
+      </ion-col>
+      <ion-col text-right>
+        <button ion-button clear small color="danger" icon-start>
+          <ion-icon name='calendar'></ion-icon>
+          {{formatDate(feedItem.pubDate)}}
+        </button>
+      </ion-col>
+</ion-row>
+  </ion-card>
+
+  <!--<ion-list>
+    <ion-item >
+      
     </ion-item>
-  </ion-list>
+  </ion-list>-->
 
 </ion-content>

@@ -15,16 +15,9 @@
 
 <ion-content padding>
 
-
-
+	<h3>{{feedItem.title}}</h3>
 
     <img [src]="feedItem.thumbnail">
 
-      <p [innerHTML]="feedItem.description"></p>
-
-
-
-
-
-
+    <p [innerHTML]="feedItem.content" style="text-align: justify;"></p>
 </ion-content>

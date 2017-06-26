@@ -6,6 +6,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { RSSFeedReader } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { DetailPage } from '../pages/detail/detail';
+import { mainHome } from '../pages/mainHome/mainHome';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,7 +16,8 @@ import { RssServiceProvider } from '../providers/rss-service/rss-service';
   declarations: [
     RSSFeedReader,
     HomePage,
-    DetailPage
+    DetailPage,
+    mainHome
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { RssServiceProvider } from '../providers/rss-service/rss-service';
   entryComponents: [
     RSSFeedReader,
     HomePage,
-    DetailPage
+    DetailPage,
+    mainHome
   ],
   providers: [
     StatusBar,

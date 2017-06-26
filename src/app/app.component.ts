@@ -5,11 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { HomePage } from '../pages/home/home';
+import { mainHome} from '../pages/mainHome/mainHome';
+
 @Component({
   templateUrl: 'app.html'
 })
 export class RSSFeedReader {
-  rootPage:any = HomePage;
+  rootPage:any = mainHome;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

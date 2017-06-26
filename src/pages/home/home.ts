@@ -40,14 +40,9 @@ export class HomePage {
         });
         toast.present();
       }
-
-      this.loadRssData(null);
-
     });
+    this.loadRssData(null);
   }
-
-
-
 
   checkNetwork() {
     return this.platform.ready().then(() => {
@@ -122,6 +117,7 @@ export class HomePage {
       if (data) {
         console.log('found cached data');
         let parsedData = JSON.parse(data);
+        console.info(parsedData);
         this.rssFeedItems = parsedData.items;
 
         if (refresher){
@@ -131,7 +127,7 @@ export class HomePage {
         console.log('no cached data found');
 
         this.http.get('https://api.rss2json.com/v1/api.json?rss_url='
-          + encodeURIComponent('https://www.wired.com/category/science/feed/'))
+          + encodeURIComponent('http://pace.ucsc.cl/feed/'))
           .map(res => res.json()).subscribe(
           data => {
             console.log('http get..');
@@ -172,6 +168,11 @@ export class HomePage {
     this.storage.clear().then((data) => {
       console.log('all clear');
     })
+  }
+
+  formatDate(dateStr)
+  {
+    return new Date(dateStr).toLocaleString("es-CL").split(" ")[0];
   }
 
 }
