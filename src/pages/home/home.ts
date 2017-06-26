@@ -41,7 +41,7 @@ export class HomePage {
         toast.present();
       }
     });
-    this.loadRssData(null);
+    this.doRefresh(null);
   }
 
   checkNetwork() {
