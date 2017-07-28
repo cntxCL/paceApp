@@ -5,6 +5,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 import { RSSFeedReader } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { ChatsPage } from '../pages/chats/chats';
+import { Chat } from '../pages/chat/chat';
 import { DetailPage } from '../pages/detail/detail';
 import { mainHome } from '../pages/mainHome/mainHome';
 
@@ -16,6 +18,8 @@ import { RssServiceProvider } from '../providers/rss-service/rss-service';
   declarations: [
     RSSFeedReader,
     HomePage,
+    ChatsPage,
+    Chat,
     DetailPage,
     mainHome
   ],
@@ -29,6 +33,8 @@ import { RssServiceProvider } from '../providers/rss-service/rss-service';
   entryComponents: [
     RSSFeedReader,
     HomePage,
+    ChatsPage,
+    Chat,
     DetailPage,
     mainHome
   ],

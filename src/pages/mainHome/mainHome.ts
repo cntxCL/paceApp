@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { Http } from '@angular/http';
 
 import { HomePage } from '../home/home';
+import { ChatsPage } from '../chats/chats';
 
 
 declare var navigator: any;
@@ -30,6 +31,11 @@ export class mainHome {
   public goToNews()
   {
     this.navCtrl.push(HomePage);
+  }
+
+  public goToChat()
+  {
+    this.navCtrl.push(ChatsPage);
   }
 
 }
