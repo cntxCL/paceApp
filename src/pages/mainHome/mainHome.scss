@@ -5,4 +5,20 @@ mainHome{
 	  display: block;
 	  margin: auto;
 	}
+
+	.gridBtn {
+		width: 135px!important;
+		background: rgb(225, 40, 64);
+		text-transform: none;
+		font-weight: unset;
+	}
+
+	.col button:hover{
+		background: rgb(225, 40, 64);
+	}
+	
+	.socialesLink
+	{
+		color: rgb(225, 40, 64);
+	}
 }

@@ -102,9 +102,10 @@ export class HomePage {
 
   itemSelected(feedItem) {
 
-      this.navCtrl.push(DetailPage,{
+      /*this.navCtrl.push(DetailPage,{
         feedItem: feedItem
-      });
+      });*/
+      window.open(feedItem.link, '_blank');
   }
 
   loadRssData(refresher) {
