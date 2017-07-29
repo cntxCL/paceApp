@@ -20245,7 +20245,7 @@ ion-navbar.toolbar {
 }
 
 .toolbar-background-ios {
-  background: #6a5f68;
+  background: #f1b038;
 }
 
 .header-ios .toolbar-background-ios,
@@ -21740,7 +21740,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-md {
   border-color: #b2b2b2;
-  background: #6a5f68;
+  background: #f1b038;
 }
 
 .header-md::after,
@@ -23190,7 +23190,7 @@ ion-navbar.toolbar {
 
 .toolbar-background-wp {
   border-color: #b2b2b2;
-  background: #6a5f68;
+  background: #f1b038;
 }
 
 .toolbar-content-wp {
@@ -24730,9 +24730,28 @@ ion-navbar.toolbar {
   }
 }
 
+ion-header {
+  background-color: black;
+}
+
 mainHome .col img {
   max-height: 100%;
   max-width: 100%;
   display: block;
   margin: auto;
+}
+
+mainHome .gridBtn {
+  width: 135px !important;
+  background: #e12840;
+  text-transform: none;
+  font-weight: unset;
+}
+
+mainHome .col button:hover {
+  background: #e12840;
+}
+
+mainHome .socialesLink {
+  color: #e12840;
 }
