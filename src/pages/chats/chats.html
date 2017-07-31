@@ -15,33 +15,16 @@
 
 <ion-content padding>
     <ion-list>
-        <ion-item-sliding>
-            <ion-item (click)="goToChat()">
+        <ion-item-sliding *ngFor="let docente of docentes">
+            <ion-item (click)="goToChat(docente.id)">
                 <ion-avatar item-left>
                     <ion-icon name='contact'></ion-icon>
                 </ion-avatar>
                 <ion-label class="label label-ios">
-                    <h2>Woody</h2>
-                    <p>This town ain't big enough for the two of us!</p>
+                    <h2>{{ docente.nombres }}  {{ docente.paterno }}</h2>
+                    <p>{{ docente.correo }}</p>
                 </ion-label>
-                <ion-note item-end="" class="note note-ios">3:43 pm</ion-note>
-            </ion-item>
-            <ion-item-options side="right">
-                <button ion-button color="danger" style="min-width: 50px" text-center>
-                    <ion-icon name="trash"></ion-icon>
-                </button>
-            </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-            <ion-item (click)="goToChat()">
-                <ion-avatar item-left>
-                    <ion-icon name='contact'></ion-icon>
-                </ion-avatar>
-                <ion-label class="label label-ios">
-                    <h2>Woody</h2>
-                    <p>This town ain't big enough for the two of us!</p>
-                </ion-label>
-                <ion-note item-end="" class="note note-ios">3:43 pm</ion-note>
+                
             </ion-item>
             <ion-item-options side="right">
                 <button ion-button color="danger" style="min-width: 50px" text-center>

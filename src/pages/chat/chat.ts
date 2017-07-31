@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component,ViewChild ,OnDestroy,OnInit} from '@angular/core';
+import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Http, Headers} from '@angular/http';
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Rx';
+import {Subscription} from "rxjs";
 
 /**
  * Generated class for the Chat page.
@@ -9,27 +13,56 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 @IonicPage()
 @Component({
-  selector: 'chat',
-  templateUrl: 'chat.html',
+	selector: 'chat',
+	templateUrl: 'chat.html',
+	queries: {
+    	content: new ViewChild(Content)
+  	}
 })
-export class Chat {
-
+export class Chat implements OnInit,OnDestroy{
+	@ViewChild(Content) content: Content;
 	public messagesList: any;
 	public newmessage: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
-  	this.messagesList = [];
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Chat');
-  }
-  send(){
-    this.messagesList.push({
-      name: 'Alberto Zenteno',
-      message: this.newmessage
-    });
-    this.newmessage="";
-  }
-
+	public mensaje: any;
+	public timer: Subscription;
+	
+	constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+		this.mensaje = {
+			alumno : navParams.get("alumno"),
+			docente: navParams.get("docente")
+		};
+  	}
+	
+	ionViewDidLoad() {
+		console.log('ionViewDidLoad Chat');
+  	}
+	send(){
+		this.mensaje.texto=this.newmessage;
+		this.http.post('http://pace.cntx.cl/api/mensaje/enviar', this.mensaje)
+			.map(res => res.json())
+			.subscribe(data => {
+				this.messagesList.push(data);
+				this.scrollToBottom();   
+			});
+		this.newmessage="";
+		
+  	}
+  	scrollToBottom(){
+        let dimensions = this.content.getContentDimensions();
+        this.content.scrollTo(0, dimensions.contentHeight+100, 100);
+    }
+    ngOnInit(){
+    	let timer1 = Observable.timer(0,2000);
+    	this.timer = timer1.subscribe(t => {
+    		this.http.post('http://pace.cntx.cl/api/mensajes', this.mensaje)
+				.map(res => res.json())
+				.subscribe(data => {
+					this.messagesList  = data;
+					this.scrollToBottom();   
+				});
+    	});
+	}
+	ngOnDestroy() {
+		this.timer.unsubscribe();
+	}
 }
