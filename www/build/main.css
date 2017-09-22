@@ -24752,6 +24752,16 @@ mainHome .col button:hover {
   background: #e12840;
 }
 
-mainHome .socialesLink {
-  color: #e12840;
+mainHome #fondoTop {
+  background-image: url("assets/img/fondo1.jpg") no-repeat fixed top, linear-gradient(#f1b038, #e76c30);
+  position: fixed;
+  width: 100%;
+  height: 25%;
+  margin: 0 auto;
+  z-index: 0;
+}
+
+mainHome .logosImg {
+  width: 100px;
+  height: 30px;
 }
