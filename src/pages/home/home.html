@@ -27,8 +27,9 @@
       <ion-card-title>
         {{ feedItem.title }}
       </ion-card-title>
-      <p>
-        {{ feedItem.description }}
+
+      <p [innerHTML]="feedItem.description">
+       
       </p>
     </ion-card-content>
     <ion-row no-padding>

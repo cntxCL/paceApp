@@ -54,25 +54,7 @@ export class HomePage {
         return;
 
       }
-
-      var networkState = navigator.connection.type;
-
-      var states = {};
-      states[Connection.UNKNOWN]  = 'Unknown connection';
-      states[Connection.ETHERNET] = 'Ethernet connection';
-      states[Connection.WIFI]     = 'WiFi connection';
-      states[Connection.CELL_2G]  = 'Cell 2G connection';
-      states[Connection.CELL_3G]  = 'Cell 3G connection';
-      states[Connection.CELL_4G]  = 'Cell 4G connection';
-      states[Connection.CELL]     = 'Cell generic connection';
-      states[Connection.NONE]     = 'No network connection';
-
-      if (networkState == Connection.NONE || networkState == Connection.UNKNOWN) {
-        this.hasNetwork = false;
-      } else {
-        this.hasNetwork = true;
-      }
-
+      this.hasNetwork = true;
     });
   }
 
@@ -152,6 +134,7 @@ export class HomePage {
 
   formatDate(dateStr)
   {
+    console.log(dateStr);
     return new Date(dateStr).toLocaleString("es-CL").split(" ")[0];
   }
 
